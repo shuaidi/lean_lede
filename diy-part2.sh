@@ -12,3 +12,9 @@
 
 # Modify default IP
 #sed -i 's/192.168.1.1/192.168.50.5/g' package/base-files/files/bin/config_generate
+# mod def name
+sed -i '/uci commit system/iuci set system.@system[0].hostname='Bpi-R2_Router'' package/lean/default-settings/files/zzz-default-settings
+# add maker info
+sed -i "s/OpenWrt /LWS build $(TZ=UTC-8 date "+%Y.%m.%d") @ OpenWrt /g" package/lean/default-settings/files/zzz-default-settings
+# mod def theme
+sed -i "s/luci-theme-bootstrap/luci-theme-argon/g" feeds/luci/collections/luci/Makefile
